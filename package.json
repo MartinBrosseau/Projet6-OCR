@@ -15,6 +15,7 @@
     "mongoose": "^6.2.9",
     "mongoose-unique-validator": "^3.0.0",
     "mongoose-validator": "^2.1.0",
-    "multer": "^1.4.4"
+    "multer": "^1.4.4",
+    "password-validator": "^5.2.1"
   }
 }
