@@ -3,7 +3,7 @@ const fs = require('fs');
 
 
 exports.createSauce = (req, res, next) => {
-  const sauceObject = JSON.parse(req.body.thing);
+  const sauceObject = JSON.parse(req.body.sauce);
   delete sauceObject._id;
   const sauce = new Sauce({
     ...sauceObject,
@@ -19,7 +19,7 @@ exports.createSauce = (req, res, next) => {
 };
 
 exports.modifySauce = (req, res, next) => {
-  const sauceObject = {};
+  let sauceObject = {};
   req.file ? (
     Sauce.findOne({
       _id: req.params.id
@@ -59,7 +59,7 @@ exports.deleteSauce = (req, res, next) => {
     .then(sauce => {
       const filename = sauce.imageUrl.split('/images/')[1];
       fs.unlink(`images/${filename}`, () => {
-        Thing.deleteOne({ _id: req.params.id })
+        Sauce.deleteOne({ _id: req.params.id })
           .then(() => res.status(200).json({ message: 'Sauce supprimée !'}))
           .catch(error => res.status(400).json({ error }));
       });
