@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 
-const sauceValidation = require('../middleware/sauceValidation');
 
 const sauceSchema = mongoose.Schema({
   
