@@ -1,4 +1,7 @@
 const mongoose = require('mongoose');
+const mongooseErrors = require('mongoose-errors');
+const sauceValidation = require('../middleware/sauceValidation');
+
 
 
 const sauceSchema = mongoose.Schema({
@@ -11,21 +14,25 @@ const sauceSchema = mongoose.Schema({
     name: {
         type: String,
         required: true,
+        validate: sauceValidation.nameValidator,
     },
     
     manufacturer: {
         type: String,
         required: true,
+        validate: sauceValidation.manufacturerValidator,
     },
     
     description: {
         type: String,
         required: true,
+        validate: sauceValidation.descriptionValidator,
     },
 
     mainPepper: {
         type: String,
         required: true,
+        validate: sauceValidation.pepperValidator,
     },
     
     imageUrl: {
@@ -54,5 +61,8 @@ const sauceSchema = mongoose.Schema({
         type: [String]
     },
 })
+
+
+sauceSchema.plugin(mongooseErrors);
 
 module.exports = mongoose.model('Sauce', sauceSchema);
