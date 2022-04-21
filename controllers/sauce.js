@@ -1,6 +1,6 @@
 const Sauce = require('../models/sauce');
 const fs = require('fs');
-const sauceValidation = require('../middleware/sauceValidation');
+
 
 
 exports.createSauce = (req, res, next) => {
