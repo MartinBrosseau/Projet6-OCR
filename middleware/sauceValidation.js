@@ -8,7 +8,7 @@ exports.nameValidator = [
   }),
   validate({
     validator: 'matches',
-    arguments: /^[a-z\d\-_\s]+$/i, 
+    arguments: /^[a-zA-Z\u0080-\u024F\s\/\-\)\(\,\.\"]+$/i, 
     message: "Vous ne pouvez utiliser que des chiffres et des lettres pour nommer votre sauce",
   }),
 ];
@@ -21,7 +21,7 @@ exports.manufacturerValidator = [
   }),
   validate({
     validator: 'matches',
-    arguments: /^[a-z\d\-_\s]+$/i, 
+    arguments: /^[a-zA-Z\u0080-\u024F\s\/\-\)\(\,\.\"]+$/i, 
     message: "Vous ne pouvez utiliser que des chiffres et des lettres pour nommer le fabricant",
   }),
 ];
@@ -34,7 +34,7 @@ exports.descriptionValidator = [
   }),
   validate({
     validator: 'matches',
-    arguments: /^[a-z\d\-_\s\.\,]+$/i, 
+    arguments: /^[a-zA-Z\u0080-\u024F\s\/\-\)\(\,\.\"]+$/i, 
     message: "Vous ne pouvez utiliser que des chiffres et des lettres pour la description de la sauce",
   }),
 ];
@@ -47,7 +47,7 @@ exports.pepperValidator = [
   }),
   validate({
     validator: 'matches', 
-    arguments: /^[a-z\d\-_\s\.\,]+$/i,
+    arguments: /^[a-zA-Z\u0080-\u024F\s\/\-\)\(\,\.\"]+$/i,
     message: "Ne peut contenir que des caractères alphanumériques entre 3 et 20 caractères",
   }),
 ];
