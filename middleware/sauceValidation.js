@@ -1,4 +1,7 @@
-const validate = require('mongoose-validator'); 
+//Ce fichier sert a sécuriser les champs de création de sauce en limitant les caractères utilisables et leur quantité
+//Ceci permet de lutter notamment contre les injections SQL
+const validate = require('mongoose-validator');
+
 
 exports.nameValidator = [ 
   validate({

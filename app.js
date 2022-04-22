@@ -5,7 +5,7 @@ const saucesRoutes = require('./routes/sauce');
 const userRoutes = require('./routes/user');
 const path = require('path');
 
-
+//Connection a notre base de donnée MongoDB
 mongoose.connect('mongodb+srv://MartinBrosseau:databasepassword@cluster0.giuct.mongodb.net/Cluster0?retryWrites=true&w=majority',
     { useNewUrlParser: true,
     useUnifiedTopology: true })

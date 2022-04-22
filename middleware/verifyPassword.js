@@ -1,6 +1,6 @@
 const passwordSchema = require('../models/password');
 
-
+//On valide (ou pas) le mot de passe afin qu'il corresponde a notre model de mot de passe
 module.exports = (req, res, next) => {
     if (!passwordSchema.validate(req.body.password)) {
         res.writeHead(400, '{"message":"Mot de passe requis : 8 caractères minimun. Au moins 1 Majuscule, 1 minuscule, 1 chiffre. Sans espaces"}', {

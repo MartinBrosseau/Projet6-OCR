@@ -3,7 +3,8 @@ const mongooseErrors = require('mongoose-errors');
 const sauceValidation = require('../middleware/sauceValidation');
 
 
-
+//Notre model de sauce, on restreint les possibilités grâce a nos sauceValidations
+//On rends les champs obligatoire (required)
 const sauceSchema = mongoose.Schema({
   
     userId: {
