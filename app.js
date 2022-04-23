@@ -4,6 +4,9 @@ const mongoose = require('mongoose');
 const saucesRoutes = require('./routes/sauce');
 const userRoutes = require('./routes/user');
 const path = require('path');
+const cookie = require('cookie-session');//gestion et sécurisation des cookies
+const keygrip = require('keygrip');
+const helmet = require('helmet');
 
 //Connection a notre base de donnée MongoDB
 mongoose.connect('mongodb+srv://MartinBrosseau:databasepassword@cluster0.giuct.mongodb.net/Cluster0?retryWrites=true&w=majority',
@@ -20,6 +23,24 @@ app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
     next();
 });
+//Keygrip sert vérifier nos cookie grâce a une clé sécurisée
+keylist = require("keygrip");
+keylist = ["SEKRIT3", "SEKRIT2", "SEKRIT1"];
+
+const cookieExpire = new Date(Date.now() + 3600000);
+app.use(cookie({
+    name: 'session',
+    keys: keygrip(keylist),
+    secret: process.env.SEC_SES,
+    cookie: {
+      secure: true,
+      httpOnly: true,
+      domain: 'http://localhost:3000',
+      expires: cookieExpire
+    }
+}));
+
+app.use(helmet());//On utilise helmet pour plus de sécurité contre le cross-site scripting notamment
 
 app.use(bodyParser.json());
 
