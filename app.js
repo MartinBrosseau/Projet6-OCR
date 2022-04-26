@@ -40,7 +40,7 @@ app.use(cookie({
     }
 }));
 
-app.use(helmet());//On utilise helmet pour plus de sécurité contre le cross-site scripting notamment
+
 
 app.use(bodyParser.json());
 
