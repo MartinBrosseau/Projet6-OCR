@@ -6,7 +6,6 @@ const userRoutes = require('./routes/user');
 const path = require('path');
 const cookie = require('cookie-session');//gestion et sécurisation des cookies
 const keygrip = require('keygrip');
-const helmet = require('helmet');
 
 //Connection a notre base de donnée MongoDB
 mongoose.connect('mongodb+srv://MartinBrosseau:databasepassword@cluster0.giuct.mongodb.net/Cluster0?retryWrites=true&w=majority',
