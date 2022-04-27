@@ -10,8 +10,9 @@ const userSchema = mongoose.Schema({
     },
     password : { 
         type: String,
-         required: [true, "Veuillez choisir un mot de passe"] 
-        }
+        required: true,
+        match : [/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/, "Votre mot de passe doit contenir 8caractères minimum, 1 majuscule, 1 miniscule, 1 chiffre et un caractère spécial"]
+    }
 });
 
 userSchema.plugin(uniqueValidator);
