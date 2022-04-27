@@ -1,6 +1,8 @@
 //Ce fichier comporte toute la logique métier concernant les sauces(création, modification et suppression)
 //On importe notre modèle de sauce
 const Sauce = require('../models/sauce');
+const jwt = require('jsonwebtoken');
+const TOKEN = process.env.TOKEN;
 
 const fs = require('fs');
 
@@ -65,7 +67,10 @@ let userId = req.body.userId;
 
 //Suppression d'une sauce
 exports.deleteSauce = (req, res, next) => {
-let userId = req.body.userId;
+  const token = req.headers.authorization.split(' ')[1]; //On récupère l'id utilisateur dans le token
+  const decodedToken = jwt.verify(token,`${TOKEN}`);
+  const userId = decodedToken.userId;
+console.log(userId)
   Sauce.findOne({ _id: req.params.id })
   .then((sauce) => {
     if (sauce.userId !== userId){  // On vérifie si l'id de l'utilisateur correspond a l'id du créateur de la sauce
