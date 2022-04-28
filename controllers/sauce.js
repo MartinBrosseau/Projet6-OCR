@@ -27,7 +27,9 @@ exports.createSauce = (req, res, next) => {
 //Modification d'une sauce existante
 exports.modifySauce = (req, res, next) => {
 let sauceObject = {};
-let userId = req.body.userId; 
+const token = req.headers.authorization.split(' ')[1]; //On récupère l'id utilisateur dans le token
+const decodedToken = jwt.verify(token,`${TOKEN}`);
+const userId = decodedToken.userId;
   req.file ? ( //Si la modification contient une image, on supprime l'ancienne image
     Sauce.findOne({ _id: req.params.id})
       .then((sauce) => {
