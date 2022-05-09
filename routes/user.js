@@ -5,7 +5,7 @@ const userCtrl = require('../controllers/user');
 const signUpLimiter = require('../middleware/limiter');
 
 //Route permettant de crée un nouvel utilisateur
-router.post('/signup', signUpLimiter, userCtrl.signup,);
+router.post('/signup', signUpLimiter, userCtrl.signup);
 
 //Route permettant de connecter un utilisateur existant
 router.post('/login', userCtrl.login);
